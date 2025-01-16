@@ -16,6 +16,7 @@ bidders = {
     'Bid': [],
 }
 
+
 print(logo)
 
 def find_highest_bidder(bidding_dictionary):
