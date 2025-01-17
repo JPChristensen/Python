@@ -1,4 +1,18 @@
-
+logo = '''
+ _____________________
+|  _________________  |
+| | Pythonista   0. | |  .----------------.  .----------------.  .----------------.  .----------------. 
+| |_________________| | | .--------------. || .--------------. || .--------------. || .--------------. |
+|  ___ ___ ___   ___  | | |     ______   | || |      __      | || |   _____      | || |     ______   | |
+| | 7 | 8 | 9 | | + | | | |   .' ___  |  | || |     /  \     | || |  |_   _|     | || |   .' ___  |  | |
+| |___|___|___| |___| | | |  / .'   \_|  | || |    / /\ \    | || |    | |       | || |  / .'   \_|  | |
+| | 4 | 5 | 6 | | - | | | |  | |         | || |   / ____ \   | || |    | |   _   | || |  | |         | |
+| |___|___|___| |___| | | |  \ '.___.'\  | || | _/ /    \ \_ | || |   _| |__/ |  | || |  \ '.___.'\  | |
+| | 1 | 2 | 3 | | x | | | |   '._____.'  | || ||____|  |____|| || |  |________|  | || |   '._____.'  | |
+| |___|___|___| |___| | | |              | || |              | || |              | || |              | |
+| | . | 0 | = | | / | | | '--------------' || '--------------' || '--------------' || '--------------' |
+| |___|___|___| |___| |  '----------------'  '----------------'  '----------------'  '----------------' 
+|_____________________|'''
 
 """Operation Function"""
 
@@ -21,11 +35,39 @@ opertaions = {
     "/": divide
 }
 
-cont = True
-while cont:
-    first_number = int(input("What is your first number?:  "))
-    second_number = int(input("What is your second number?:  "))
-    user_operation = input("What operation do you want to use?:  ")
-    
+# Prints the possible operations and returns the user's choice.
+def show_operations():
+    for key in opertaions:
+        print(key)
 
-    print(f"{first_number} {user_operation} {second_number} = {opertaions[user_operation](first_number,second_number)}")
+    return input("What operation do you want to use?:  ")
+
+# Keep Calculating
+cont = True
+
+while cont:
+    print(logo)
+    first_number = float(input("What is your first number?:  "))
+    same_operation = True
+
+    # If the user would like to continue the operations
+    while same_operation:
+        user_operation = show_operations()
+        second_number = float(input("What is your second number?:  "))
+        
+        
+        answer = opertaions[user_operation](first_number,second_number)
+        print(f"{first_number} {user_operation} {second_number} = {answer}")
+
+        keep_going = input(f"Type 'y' to continue calculating with {answer}, type 'n' to start a new calculation, or type anything else to quit application:  ")
+
+        #Continues the loop based on the user's selection, y for the same equation, n for a new equation, or anything else to quit the application.
+        if (keep_going == 'y'):
+            first_number = answer
+        elif (keep_going == 'n'):
+            same_operation = False
+        else:
+            cont = False
+            same_operation = False
+            
+    
