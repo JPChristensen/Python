@@ -1,5 +1,6 @@
 # Ranks and suits for all cards.
-
+ranks = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
+suits = ["spades", "hearts", "diamonds", "clubs"]
 # Key is Suit and 0-12 is Rank starting with Ace and ending with King.
 deck_of_cards = {
     "spades": ['''
